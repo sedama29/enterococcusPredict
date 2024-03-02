@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     // height: '100%',
     // backgroundColor:'white',
     borderRadius: 5,
-
   },
+
   pickerContainer: {
     width: '70%',
     borderRadius: 5,
@@ -18,23 +18,30 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'space-between',
   },
-  
+
   dropdownContainer: {
-    marginTop: 50, 
-    marginLeft: 10, 
-    marginRight: 10, 
-    padding: 5,
-    width: '90%',
-    position: 'absolute',
-    top: '100%',
-    left: 0,
-    right: 0,
     backgroundColor: 'white',
     borderRadius: 5,
+    borderColor: 'black', 
+    borderWidth: 1, 
+    paddingVertical: 10,
     elevation: 3,
     overflow: 'hidden',
-    borderColor: 'black', // Set the border color to black
-    borderWidth: 1, // Add a border width
+    marginTop: '18%',
+    marginLeft:'2%', 
+    paddingHorizontal: 15,
+    ...Platform.select({
+      ios: {
+        maxHeight: '80%',
+        width: '68%',
+        alignSelf: 'left',
+      },
+      android: {
+        maxHeight: '80%',
+        width: '70%',
+        alignSelf: 'left',
+      },
+    }),
   },
   picker: {
     width: '100%',
