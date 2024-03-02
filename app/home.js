@@ -12,8 +12,8 @@ import MapImage2 from '../assets/images/map_images/GAL.jpg';
 import MapImage3 from '../assets/images/map_images/BRA.jpg';
 import MapImage4 from '../assets/images/map_images/NUE.jpg';
 import MapImage5 from '../assets/images/map_images/CAM.jpg';
-
 const initialLayout = { width: Dimensions.get('window').width };
+import RNPickerSelect from 'react-native-picker-select';
 
 
 const Home = () => {
@@ -30,6 +30,8 @@ const Home = () => {
   const [isImageModalVisible, setImageModalVisible] = useState(false);
   const [isCamModalVisible, setCamModalVisible] = useState(false);
   const [isPickerModalVisible, setPickerModalVisible] = useState(false);
+  const [buttonLayout, setButtonLayout] = useState(null);
+
 
   const renderPickerItem = ({ item }) => (
     <TouchableOpacity
@@ -53,7 +55,6 @@ const Home = () => {
 
   const handleMapPress = (evt) => {
     const { locationX, locationY } = evt.nativeEvent;
-
     for (const touchArea of touchAreas) {
       if (
         locationX >= touchArea.x[0] && locationX <= touchArea.x[1] &&
@@ -341,7 +342,6 @@ const Home = () => {
       }
     };
 
-
     // Function to select the first site as default
     const processSiteOptions = (siteArray) => {
       if (Array.isArray(siteArray) && siteArray.length > 0) {
@@ -398,14 +398,21 @@ const Home = () => {
       </Modal>
 
 
-
       <Modal
         visible={isPickerModalVisible}
         onRequestClose={() => setPickerModalVisible(false)}
         transparent={true}
+        animationType="fade"
       >
-        <View style={styles.modalContainer}>
-          <View style={styles.dropdownContainer}>
+      <View style={[styles.modalContainer, {
+          top: buttonLayout ? buttonLayout.y + buttonLayout.height : 0, // Position below the button
+        }]}>
+        <TouchableOpacity
+          style={styles.modalContainer}
+          activeOpacity={1} // Maintain the background opacity
+          onPressOut={() => setPickerModalVisible(false)} // Dismiss modal on pressing outside
+        >
+          <View style={styles.dropdownContainer} onStartShouldSetResponder={() => true}>
             <FlatList
               data={siteOptions}
               renderItem={renderPickerItem}
@@ -413,32 +420,35 @@ const Home = () => {
               style={styles.dropdownList}
             />
           </View>
+        </TouchableOpacity>
         </View>
       </Modal>
+
 
       <View style={styles.pickerAndDotsContainer}>
         <View style={styles.pickerContainer}>
           <TouchableOpacity
             onPress={() => setPickerModalVisible(true)}
+            onLayout={(event) => {
+              const layout = event.nativeEvent.layout;
+              setButtonLayout(layout);
+            }}
             style={styles.pickerButton}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
               <Text style={{ color: 'blue', padding: 5 }}>
                 {selectedSite ? siteOptions.find(item => item.match(/\(([^)]+)\)/)?.[1] === selectedSite) : 'Select Site'}
               </Text>
-              {/* <FontAwesome name="caret-down" size={20} color="black"  style={{ right:5 }}/> */}
             </View>
           </TouchableOpacity>
         </View>
-        <ImageBackground
-          source={require('../assets/images/map_images/map_main.jpg')} 
-          style={styles.dotsButtonBackground} 
-        >
-        <TouchableOpacity onPress={() => setImageModalVisible(true)} style={styles.dotsButton}>
-          <Text style={styles.dotsButtonText}>⋮</Text>
+        <TouchableOpacity onPress={() => setImageModalVisible(true)} style={styles.dotsButtonBackground}>
+          <ImageBackground
+            source={require('../assets/images/map_images/bg.jpg')}
+            style={{ width: '100%', height: '100%' }} 
+          >
+          </ImageBackground>
         </TouchableOpacity>
-
-        </ImageBackground>
 
       </View>
 

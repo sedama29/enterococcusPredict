@@ -20,10 +20,11 @@ export const styles = StyleSheet.create({
   },
   
   dropdownContainer: {
-    marginTop: 160, 
+    marginTop: 50, 
     marginLeft: 10, 
     marginRight: 10, 
     padding: 5,
+    width: '90%',
     position: 'absolute',
     top: '100%',
     left: 0,

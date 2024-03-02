@@ -9,7 +9,13 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      screenOptions={({ route }) => ({
+        header: ({ scene }) => (
+          <CustomHeader title={route.name} showHeader={scene?.route?.name !== 'Home'} />
+        ),
+      })}
+    >
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="About..." component={About} />
       <Drawer.Screen name="Texas General Land Office" component={Tglo} />

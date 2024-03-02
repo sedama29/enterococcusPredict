@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
@@ -14,9 +14,6 @@ const HamburgerIcon = () => (
   </Svg>
 );
 
-
-
-
 const CustomHeader = ({ title, showHeader }) => {
   const navigation = useNavigation();
 
@@ -25,7 +22,13 @@ const CustomHeader = ({ title, showHeader }) => {
   }
 
   return (
-    <View style={{ height: 50, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center' }}>
+    <View style={{
+      height: 50,
+      backgroundColor: 'white',
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingTop: Platform.OS === 'ios' ? 15 : 0, // Apply padding only for iOS
+    }}>
       <TouchableOpacity
         onPress={() => navigation.openDrawer()}
         style={{ marginLeft: 10 }}
