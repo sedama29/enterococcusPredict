@@ -44,10 +44,7 @@ export const styles = StyleSheet.create({
       marginHorizontal: 10,
       height: 40,
       justifyContent: 'center',
-      backgroundColor: 'lightgray', // Temporary background for debugging
-      padding: 10, 
       zIndex: 1, 
-      // fontFamily: 'Helvetica',
     },
 
     dropdownButton: {

@@ -159,9 +159,26 @@ const GraphView = ({ siteId }) => {
 
   let tickValues = [];
   if (Object.keys(data).length > 0) {
-    const dates = data[Object.keys(data)[0]].map(d => d.date);
-    tickValues = d3.timeWeek.every(1).range(d3.min(dates), d3.max(dates));
+    // Calculate the maximum date across all sites
+    const allDates = Object.values(data).flatMap(dataset => dataset.map(d => d.date));
+    const maxDate = d3.max(allDates);
+  
+    // Calculate tick values for each week from the current minimum date until the end of the next month of the maximum date
+    tickValues = [new Date(d3.min(allDates))];
+    
+    // Calculate the last day of the next month of the maximum date
+    const lastDayOfMonth = new Date(maxDate.getFullYear(), maxDate.getMonth() + 2, 0);
+  
+    // Add extra tick values with a gap of one week until the end of the next month
+    while (tickValues[tickValues.length - 1] <= lastDayOfMonth) {
+      tickValues.push(new Date(tickValues[tickValues.length - 1].getTime() + 7 * 24 * 60 * 60 * 1000));
+    }
   }
+  
+  
+  
+  
+  
 
 
 
@@ -169,7 +186,7 @@ const GraphView = ({ siteId }) => {
     <ScrollView horizontal style={styles.container} contentContainerStyle={styles.contentContainer}>
        <View style={styles.legendToggleButton}>
         <TouchableOpacity onPress={toggleDropdown}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>⋮</Text>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', backgroundColor: 'lightgray',padding: 10,  }}>⋮</Text>
         </TouchableOpacity>
 
         {dropdownVisible && (
