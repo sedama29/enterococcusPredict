@@ -212,6 +212,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ddd',
     padding: 10,
     borderRadius: 5,
+    marginTop: 25,
   },
   dotTouchable: {
     position: 'absolute',

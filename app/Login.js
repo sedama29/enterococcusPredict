@@ -23,7 +23,6 @@ export const SignInWithGoogle = async () => {
 
     if (isAllowed) {
       const firebaseAuthResult = await auth().signInWithCredential(googleCredential);
-      Alert.alert('Success', 'You are signed in!');
       await GoogleSignin.revokeAccess();
       return true; // Sign-in successful
     } else {
