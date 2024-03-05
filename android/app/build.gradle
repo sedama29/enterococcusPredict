@@ -91,9 +91,9 @@ android {
         }
         release {
             storeFile file('release_key.keystore')
-            storePassword 'relase_key'
+            storePassword 'Harte@123'
             keyAlias 'release_key'
-            keyPassword 'relase_key'
+            keyPassword 'Harte@123'
         }
     }
     buildTypes {

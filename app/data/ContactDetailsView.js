@@ -41,7 +41,7 @@ const ContactDetailsView = ({ details }) => {
                 </View>
                 <View style={styles.row_contact}>
                     <Text style={styles.column_contact}>Email:</Text>
-                    <Text style={styles.value_contact}>{renderLink((details.l_gov_contact1_email))}</Text>
+                    <Text style={styles.value_contact}>{displayValueOrNA(details.l_gov_contact1_email)}</Text>
                 </View>
                 <View style={styles.row_contact}>
                     <Text style={styles.column_contact}>Address:</Text>
@@ -101,7 +101,7 @@ const ContactDetailsView = ({ details }) => {
                 </View>
                 <View style={styles.row_contact}>
                     <Text style={styles.column_contact}>Email:</Text>
-                    <Text style={styles.value_contact}>{renderLink(details.pm_email)}</Text>
+                    <Text style={styles.value_contact}>{displayValueOrNA(details.pm_email)}</Text>
                 </View>
             </View>
         </ScrollView>

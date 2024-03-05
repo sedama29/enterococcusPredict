@@ -4,8 +4,6 @@ export const styles = StyleSheet.create({
   container: {
     padding: 10,
     width: '100%',
-    // height: '100%',
-    // backgroundColor:'white',
     borderRadius: 5,
   },
 
@@ -73,7 +71,6 @@ export const styles = StyleSheet.create({
   container_location: {
     borderWidth:1,
     padding: 5,
-    // height: 300,
     resizeMode: 'contain',
     borderRadius: 5,
     overflow: 'hidden',
@@ -101,18 +98,14 @@ export const styles = StyleSheet.create({
     width: '100%',
     borderWidth: 1,
     padding: 5,
-    // height: 500,
     borderRadius: 5,
-    // fontFamily: 'Helvetica',
   },
 
   textSpacing: {
     marginBottom: 10,
-    // fontFamily: 'Helvetica',
   },
   rowText: {
     fontWeight: 'bold',
-    // fontFamily: 'Helvetica',
   },
   dataRow: {
     flexDirection: 'row',
@@ -120,7 +113,6 @@ export const styles = StyleSheet.create({
     padding: 5,
     borderBottomWidth: 1,
     borderColor: '#ddd',
-    // fontFamily: 'Helvetica',
   },
   tableHeader: {
     flexDirection: 'row',
