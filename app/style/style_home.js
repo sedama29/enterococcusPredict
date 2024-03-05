@@ -90,7 +90,6 @@ export const styles = StyleSheet.create({
     width: '100%',
     aspectRatio: 1.5, 
     resizeMode: 'contain',
-
   },
 
   container_contact: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Modal, TouchableWithoutFeedback} from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Modal, TouchableWithoutFeedback, Image} from 'react-native';
 import { VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, VictoryArea, VictoryContainer, VictoryZoomContainer } from 'victory-native';
 import axios from 'axios';
 import * as d3 from 'd3';
@@ -10,7 +10,7 @@ import CustomZoomBackgroundContainer from './CustomZoomBackgroundContainer';
 
 
 const chartPadding = { top: 10, bottom: 50, left: 50, right: 50 };
-
+const configIcon = require('../../assets/images/map_images/configuration_icon.jpg');
 
 const GraphView = ({ siteId }) => {
   const [data, setData] = useState({});
@@ -178,10 +178,19 @@ const GraphView = ({ siteId }) => {
 
   return (
     <ScrollView horizontal style={styles.container} contentContainerStyle={styles.contentContainer}>
-       <View style={styles.legendToggleButton}>
-        <TouchableOpacity onPress={toggleDropdown}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', backgroundColor: 'lightgray',padding: 10,  }}>⋮</Text>
-        </TouchableOpacity>
+   <View style={styles.legendToggleButton}>
+  <TouchableOpacity onPress={toggleDropdown}>
+    <Image
+      source={configIcon}
+      style={{
+        width: 25,  // Adjust the width and height according to your preference
+        height: 25,
+        resizeMode: 'contain',  // Adjust the resizeMode as needed
+      }}
+    />
+  </TouchableOpacity>
+
+        
 
         {dropdownVisible && (
       <Modal

@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       borderWidth: 1,
+      height: 400, 
     },
     contentContainer: {
       justifyContent: 'center',
@@ -21,13 +22,15 @@ export const styles = StyleSheet.create({
     legendContainer: {
       position: 'absolute',
       top: 40,
-      right: 50,
+      left: 'auto', // This will make the positioning automatic based on the 'right' value
+      right: 10,
       backgroundColor: 'white',
-      width: 120, // Adjust as needed
-      height: 210, // Adjust as needed
+      width: 180, // Adjust as needed
+      height: 350, // Adjust as needed
       padding: 10, 
       borderRadius: 5,
     },
+    
 
     legendItem: {
       flexDirection: 'row',
@@ -80,5 +83,13 @@ export const styles = StyleSheet.create({
     dropdownItemText: {
       color: 'black', 
       fontSize: 10,// Default text color
+    },
+
+    dotsButtonBackground: {
+      width: 15,
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft: 10,
     },
   });

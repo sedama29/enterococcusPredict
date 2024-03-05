@@ -445,7 +445,7 @@ const Home = () => {
         <TouchableOpacity onPress={() => setImageModalVisible(true)} style={styles.dotsButtonBackground}>
           <ImageBackground
             source={require('../assets/images/map_images/bg.jpg')}
-            style={{ width: '100%', height: '100%' }} 
+            style={{ width: '130%', height: '100%' }} 
           >
           </ImageBackground>
         </TouchableOpacity>
@@ -497,7 +497,7 @@ const Home = () => {
         onRequestClose={() => setImageModalVisible(false)}
       >
         <View style={styles.modalView_2}>
-          <TouchableOpacity onPress={handleMapPress} style={{ width: '100%', height: '50%', justifyContent: 'center', alignItems: 'center' }}>
+          <TouchableOpacity onPress={handleMapPress} style={{ width: '10%', height: '50%', justifyContent: 'center', alignItems: 'center' }}>
             <Image
               source={require('../assets/images/map_images/map_main.jpg')}
               resizeMode="contain"
