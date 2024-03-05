@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
       fontSize: 10, // Reduced font size
       marginVertical: 2, // Adjusted margin
       // fontFamily: 'Helvetica',
-
     },
     legendToggleButton: {
       position: 'absolute',
@@ -83,5 +82,3 @@ export const styles = StyleSheet.create({
       fontSize: 10,// Default text color
     },
   });
-
-  

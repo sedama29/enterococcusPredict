@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomZoomBackgroundContainer from './CustomZoomBackgroundContainer';
 
 
+
 const chartPadding = { top: 10, bottom: 50, left: 50, right: 50 };
 
 
@@ -19,8 +20,8 @@ const GraphView = ({ siteId }) => {
   const [maxYValue, setMaxYValue] = useState(0); 
 
 
-  const screenWidth = 400;
-  const screenHeight = 300;
+  const screenWidth = 500;
+  const screenHeight = 400;
   const today = new Date();
   const fiveHoursInMs = 7 * 60 * 60 * 1000; // milliseconds in 5 hours
   const earlierToday = new Date(today - fiveHoursInMs);
@@ -103,9 +104,11 @@ const GraphView = ({ siteId }) => {
           return acc;
         }, {});
 
-        const maxValue = d3.max(filteredData, d => {
-          return d3.max(Object.keys(d).filter(key => key !== 'date'), key => d[key]);
-        });
+        // const maxValue = d3.max(filteredData, d => {
+        //   return d3.max(Object.keys(d).filter(key => key !== 'date'), key => d[key]);
+        // });
+
+        const maxValue = 100
     
         setMaxYValue(maxValue);
     
@@ -145,9 +148,6 @@ const GraphView = ({ siteId }) => {
 
   const formatDate = d3.timeFormat("%d %b");
 
-
-
-
   // Generate areaPlotData conditionally based on the visibility of the grouped plots
   let areaPlotData = [];
   if (visiblePlots['Probality_Space_high'] && visiblePlots['Probality_Space_low'] && data['Probality_Space_high'] && data['Probality_Space_low']) {
@@ -174,12 +174,6 @@ const GraphView = ({ siteId }) => {
       tickValues.push(new Date(tickValues[tickValues.length - 1].getTime() + 7 * 24 * 60 * 60 * 1000));
     }
   }
-  
-  
-  
-  
-  
-
 
 
   return (
